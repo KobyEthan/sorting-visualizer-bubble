@@ -13,11 +13,23 @@ const columns = [];
 const spacing = (canvas.width - margin * 2) / n;
 const ctx = canvas.getContext("2d");
 
+const maxColumnHeight = 200;
+
 for (let i = 0; i < array.length; i++) {
   const x = i * spacing + spacing / 2 + margin;
-  const y = canvas.height - margin;
+  const y = canvas.height - margin - i * 3;
   const width = spacing;
-  const height = (canvas.height - margin * 2) * array[i];
+  const height = maxColumnHeight * array[i];
   columns[i] = new Column(x, y, width, height);
-  columns[i].draw(ctx);
+}
+
+animate();
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  for (let i = 0; i < close.length; i++) {
+    cols[i].draw(ctx);
+  }
+
+  requestAnimationFrame(animate);
 }
