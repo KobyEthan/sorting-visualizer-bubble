@@ -11,6 +11,8 @@ const ctx = canvas.getContext("2d");
 
 const maxColumnHeight = 200;
 
+init();
+
 function init() {
   for (let i = 0; i < n; i++) {
     array[i] = Math.random();
@@ -25,7 +27,7 @@ function init() {
   }
 }
 
-function play() {
+function playBubbleSort() {
   moves = bubbleSort(array);
 }
 
@@ -63,7 +65,8 @@ function animate() {
       columns[j].moveTo(columns[i], -1);
       [columns[i], columns[j]] = [columns[j], columns[i]];
     } else {
-      //to-do
+      columns[i].jump();
+      columns[j].jump();
     }
   }
 
